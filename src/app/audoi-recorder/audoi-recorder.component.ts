@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 declare var $: any;
-// import * as RecordRTC from 'recordrtc';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -15,46 +15,32 @@ export class AudoiRecorderComponent implements OnInit {
   error: any;
   url: any;
   recording = false;
-  constructor(private domSanitizer: DomSanitizer) { }
+  closeResult: string = '';
+  constructor(private domSanitizer: DomSanitizer, private modalService: NgbModal) { }
 
   sanitize(url: string) {
     return this.domSanitizer.bypassSecurityTrustUrl(url);
   }
+  open(content:any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  } 
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
 
-  // initiateRecording() {
-  //   this.recording = true;
-  //   let mediaConstraints = {
-  //   video: false,
-  //   audio: true
-  //   }
-  //   navigator.mediaDevices.getUserMedia(mediaConstraints).then(this.successCallback.bind(this), this.errorCallback.bind(this));
-  // }
-
-  // successCallback(stream: any) {
-  //   var options = {
-  //   mimeType: "audio/wav",
-  //   numberOfAudioChannels: 1,
-  //   sampleRate: 16000,
-  //   };
-  //   var StereoAudioRecorder = RecordRTC.StereoAudioRecorder;
-  //   this.record = new StereoAudioRecorder(stream, options);
-  //   this.record.record();
-  // }
-
-  // stopRecording() {
-  //   this.recording = false;
-  //   this.record.stop(this.processRecording.bind(this));
-  // }
-
-  // processRecording(blob: any) {
-  //   this.url = URL.createObjectURL(blob);
-  //   console.log("blob", blob);
-  //   console.log("url", this.url);
-  // }
-
-  // errorCallback(error: any) {
-  //   this.error = 'Can not play audio in your browser';
-  // }
+  public customToolbar: Object = {
+    items: ['Bold', 'Italic', 'Undo', 'Redo', 'CreateTable', 'Image', 'Underline', 'Formats', 'Alignments']
+  }
 
   ngOnInit(): void {
   }

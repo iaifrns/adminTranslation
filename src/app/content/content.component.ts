@@ -1,23 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
-declare var window:any;
-
 @Component({
-  selector: 'app-language',
-  templateUrl: './language.component.html',
-  styleUrls: ['./language.component.scss']
+  selector: 'app-content',
+  templateUrl: './content.component.html',
+  styleUrls: ['./content.component.scss']
 })
-export class LanguageComponent implements OnInit {
-
-  title= 'ang13-bootstrap5-modal-demo';
-  formModal: any;
+export class ContentComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit(): void {
-    this.formModal = new window.bootstrap.Modal(
-      document.getElementById("myForm")
-    );
   }
 
   openModal(){

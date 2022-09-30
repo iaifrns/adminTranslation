@@ -1,0 +1,41 @@
+  <div>
+    <div style="float: left; position: fixed;">
+        <app-navbar></app-navbar>
+    </div>
+    <div style="float: right;  width: 80%;">
+        <app-header></app-header>
+
+        <div>
+            <button (click)="openModal()" id="open" class="conhead">Add Title</button>
+        </div>
+        
+        <div class="w-full overflow-hidden rounded-lg shadow-xs">
+            <div class="titleImg">
+                <img style="border-radius: 50%;" src="../../assets/img/login-office.jpeg" alt="">
+                <div style="text-align: center;">
+                    <p style="font-size: 20px;">Introduction</p>
+                    <p style="font-size: 11px;">English</p>
+                </div>
+            </div>
+        </div>   
+
+        <div class="form-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+          
+              <label for="psw"><b>Title</b></label>
+              <input type="text" placeholder="Enter Password" name="psw" required>
+              <input type="file" placeholder="Select Image">
+              <select name="" id="">
+                <option value="">english</option>
+                <option value="">French</option>
+              </select>
+              
+              <button type="button" class="btn cancel" onclick="closeForm()">Submit</button>
+            </form>
+          </div>
+              
+          </div> 
+    </div>
+    
+
+<router-outlet></router-outlet>

@@ -11,6 +11,8 @@ import { ExamplesComponent } from './examples/examples.component';
 import { UsersComponent } from './users/users.component';
 import { AudoiRecorderComponent } from './audoi-recorder/audoi-recorder.component';
 import { LanguageComponent } from './language/language.component';
+import { ContentComponent } from './content/content.component';
+import { TitleComponent } from './title/title.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -23,7 +25,9 @@ const routes: Routes = [
   {path: 'example', component: ExamplesComponent},
   {path: 'users', component: UsersComponent},
   {path: 'audioRecorder', component: AudoiRecorderComponent},
-  {path: 'language', component: LanguageComponent}
+  {path: 'language', component: LanguageComponent},
+  {path: 'content', component: ContentComponent},
+  {path: 'title', component: TitleComponent}
 ];
 
 @NgModule({
