@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RichTextEditorModule, ToolbarService, LinkService, ImageService, HtmlEditorService, TableService } from '@syncfusion/ej2-angular-richtexteditor';
+import { FormsModule } from '@angular/forms'
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,6 +50,7 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule,
     RichTextEditorModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [ToolbarService, LinkService, ImageService, HtmlEditorService, TableService],
   bootstrap: [AppComponent]
