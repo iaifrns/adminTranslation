@@ -24,8 +24,9 @@
             >
               Login
             </h1>
+            <p style="color: red;">{{error|json}}</p>
             {{result|json}}
-            <form #usersForm="ngForm" (ngSubmit)="loginUser(usersForm.value)">
+            <form #usersForm="ngForm" (ngSubmit)="getUser(usersForm.value)">
               <label class="block text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Email</span>
                 <input
