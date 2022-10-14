@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RichTextEditorModule, ToolbarService, LinkService, ImageService, HtmlEditorService, TableService } from '@syncfusion/ej2-angular-richtexteditor';
 import { FormsModule } from '@angular/forms'
+import { CookieService } from 'ngx-cookie-service';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -52,7 +53,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     FormsModule
   ],
-  providers: [ToolbarService, LinkService, ImageService, HtmlEditorService, TableService],
+  providers: [ToolbarService, LinkService, ImageService, HtmlEditorService, TableService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

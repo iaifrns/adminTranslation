@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 declare var window:any;
@@ -11,8 +12,19 @@ export class LanguageComponent implements OnInit {
 
   title= 'ang13-bootstrap5-modal-demo';
   formModal: any;
+  data: any;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  addLanguage(input: {subjectIcon: any, subjectName: string }){
+    this.http.post("http://50-116-1-120.ip.linodeusercontent.com/subject/add/", input)
+  }
+  deleteLanguage(id: any){
+    this.http.delete("http://50-116-1-120.ip.linodeusercontent.com/subject/delete/", id)
+  }
+  getAllLanguage(){
+    this.http.get("http://50-116-1-120.ip.linodeusercontent.com/subject/add/")
+  }
 
   ngOnInit(): void {
     this.formModal = new window.bootstrap.Modal(

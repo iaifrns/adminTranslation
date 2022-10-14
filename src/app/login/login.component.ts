@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Route, ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +12,11 @@ export class LoginComponent implements OnInit {
 
   result: any;
   error: any;
+  cookieValue: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cookieService: CookieService, private router: Router,
+    private route: ActivatedRoute
+    ) { }
 
   loginUser(users: {email: string, password: string, status: string}){
     console.log(users)
@@ -25,6 +30,9 @@ export class LoginComponent implements OnInit {
     
     if (users.status == '2'){
       this.loginUser(users)
+      this.cookieService.set('token', this.result.token)
+      this.cookieValue= this.cookieService.get('token')
+      console.log(this.cookieValue, this.result.token)
     }else{
       console.log(users.status)
     }
@@ -32,6 +40,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.cookieService.get('token')){
+      this.router.navigate(['home'])
+    }
   }
 
 }
