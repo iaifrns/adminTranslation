@@ -33,6 +33,8 @@ export class LoginComponent implements OnInit {
       this.cookieService.set('token', this.result.token)
       this.cookieValue= this.cookieService.get('token')
       console.log(this.cookieValue, this.result.token)
+      
+      this.router.navigate(['home'])
     }else{
       console.log(users.status)
     }
