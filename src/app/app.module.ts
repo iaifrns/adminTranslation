@@ -25,6 +25,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TitleComponent } from './title/title.component';
 import { ContentComponent } from './content/content.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ExerciseLevelComponent } from './exercise-level/exercise-level.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,8 @@ import { HttpClientModule } from '@angular/common/http';
     AudoiRecorderComponent,
     LanguageComponent,
     TitleComponent,
-    ContentComponent
+    ContentComponent,
+    ExerciseLevelComponent
   ],
   imports: [
     BrowserModule,

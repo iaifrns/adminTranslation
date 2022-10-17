@@ -13,6 +13,7 @@ import { AudoiRecorderComponent } from './audoi-recorder/audoi-recorder.componen
 import { LanguageComponent } from './language/language.component';
 import { ContentComponent } from './content/content.component';
 import { TitleComponent } from './title/title.component';
+import { ExerciseLevelComponent } from './exercise-level/exercise-level.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
   {path: 'audioRecorder', component: AudoiRecorderComponent},
   {path: 'language', component: LanguageComponent},
   {path: 'content', component: ContentComponent},
-  {path: 'title', component: TitleComponent}
+  {path: 'title', component: TitleComponent},
+  {path: 'exercise-level', component: ExerciseLevelComponent}
 ];
 
 @NgModule({

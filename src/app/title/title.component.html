@@ -8,29 +8,64 @@
         <div>
             <button (click)="openModal()" id="open" class="conhead">Add Title</button>
         </div>
-        
-        <div class="w-full overflow-hidden rounded-lg shadow-xs">
-            <div class="titleImg">
-                <img style="border-radius: 50%;" src="../../assets/img/login-office.jpeg" alt="">
-                <div style="text-align: center;">
-                    <p style="font-size: 20px;">Introduction</p>
-                    <p style="font-size: 11px;">English</p>
-                </div>
-            </div>
-        </div>   
 
+        <table class="w-full whitespace-no-wrap">
+          <thead>
+            <tr
+              class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
+            >
+              <th class="px-4 py-3">Title Name</th>
+              <th class="px-4 py-3">Action</th>
+              <th class="px-4 py-3">Content</th>
+            </tr>
+          </thead>
+          <tbody
+            class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
+          >
+            <tr class="text-gray-700 dark:text-gray-400" *ngFor="let data of alldata">
+              <td class="px-4 py-3">
+                <div class="flex items-center text-sm">
+                  <!-- Avatar with inset shadow -->
+                  
+                  <div>
+                    <p class="font-semibold">{{data.titleName}}</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-4 py-3 text-xs">
+                <button
+                  class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100"
+                  (click)="deltitle(data)"
+                  >
+                  delete
+                </button>
+              </td>
+              <td class="px-4 py-3 text-sm">
+                <p *ngFor="let data1 of alldata1" >
+                  <span *ngIf="data1.id==data.contentId">{{data1.contents}}</span>
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table> 
+
+        
+        
+        
+        
+        
         <div class="form-popup" id="myForm">
-            <form action="/action_page.php" class="form-container">
+            <form #title="ngForm" (ngSubmit)="titleAdd(title.value)" class="form-container">
           
               <label for="psw"><b>Title</b></label>
-              <input type="text" placeholder="Enter Password" name="psw" required>
-              <input type="file" placeholder="Select Image">
-              <select name="" id="">
-                <option value="">english</option>
-                <option value="">French</option>
+              <input type="text" placeholder="pronouciation" name="titleName" required ngModel>
+              <label for=""><b>Image</b></label>
+              <input type="file" placeholder="Select Image" name="titleIcon" ngModel>
+              <select name="contentId" id="" ngModel>
+                <option *ngFor="let data of alldata1" value="{{data.id}}" >{{data.contents}}</option>
               </select>
               
-              <button type="button" class="btn cancel" onclick="closeForm()">Submit</button>
+              <button type="submit" class="btn cancel" >Submit</button>
             </form>
           </div>
               

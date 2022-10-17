@@ -4,34 +4,41 @@
     </div>
     <div style="float: right;  width: 80%;">
         <app-header></app-header>
+        <div>
+          <button (click)="openModal()" id="open" class="conhead">Add Excercise</button>
+      </div>
         <div class="grid gap-6 mb-8 md:grid-cols-2" style="margin: 2%;">
-            <div
-              class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-            >
-              <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
-                Revenue
-              </h4>
-              <p class="text-gray-600 dark:text-gray-400">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Fuga, cum commodi a omnis numquam quod? Totam exercitationem
-                quos hic ipsam at qui cum numquam, sed amet ratione! Ratione,
-                nihil dolorum.
-              </p>
-            </div>
+            
             <div
               class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs"
             >
               <h4 class="mb-4 font-semibold">
-                Colored card
-              </h4>
-              <p>
+                
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Fuga, cum commodi a omnis numquam quod? Totam exercitationem
                 quos hic ipsam at qui cum numquam, sed amet ratione! Ratione,
                 nihil dolorum.
+              </h4>
+              <p>
+                Colored card
               </p>
             </div>
           </div>
+          <div class="form-popup" id="myForm">
+            <form #title="ngForm"  class="form-container">
+          
+              <label for="psw"><b>Question</b></label>
+              <input type="text" placeholder="pronouciation" name="question" required ngModel>
+              <label for="psw"><b>Answer</b></label>
+              <input type="text" placeholder="pronouciation" name="ans" required ngModel>
+              <select name="levelId" id="" ngModel>
+                <option  value="" ></option>
+              </select>
+              
+              <button type="submit" class="btn cancel" >Submit</button>
+            </form>
+          </div>
     </div>
+    
 </div>
 <router-outlet></router-outlet>
