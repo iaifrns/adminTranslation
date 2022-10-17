@@ -32,13 +32,13 @@ export class ExerciseLevelComponent implements OnInit {
       data=>this.dataAll=data,
       error=>this.error=error
     )
-    window.location.reload();
 
   }
 
   leveladd(input: {level: number, token: any, subject_id: number}){
     input.token= this.cookieService.get('token')
     this.addLevel(input)
+    window.location.reload();
     
   }
   delLevel(id: any){

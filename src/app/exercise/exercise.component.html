@@ -9,31 +9,44 @@
       </div>
         <div class="grid gap-6 mb-8 md:grid-cols-2" style="margin: 2%;">
             
-            <div
-              class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs"
-            >
-              <h4 class="mb-4 font-semibold">
-                
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Fuga, cum commodi a omnis numquam quod? Totam exercitationem
-                quos hic ipsam at qui cum numquam, sed amet ratione! Ratione,
-                nihil dolorum.
-              </h4>
-              <p>
-                Colored card
-              </p>
-            </div>
+          <div *ngFor="let key of alldata"
+          class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs"
+          >
+          <button (click)="deleteExec(key.id)" >X</button>
+          <h4 class="mb-4 font-semibold">
+            
+            {{key.question}}
+            
+          </h4>
+          <p>
+            {{key.ans}}
+          </p>
+          <p *ngFor="let data2 of alldata2" >
+            <span *ngIf="key.id==data2.execiseId">
+              {{data2.answer}}
+            </span>
+          </p>
+          <button (click)="openModal1(key.id)" id="open1" style="float: right; border: 1px solid white; padding: 5px; border-radius: 10px;">add choises</button>
+          </div>
           </div>
           <div class="form-popup" id="myForm">
-            <form #title="ngForm"  class="form-container">
-          
+            <form #exercise="ngForm" (ngSubmit)="addexercise(exercise.value)"  class="form-container">
               <label for="psw"><b>Question</b></label>
               <input type="text" placeholder="pronouciation" name="question" required ngModel>
               <label for="psw"><b>Answer</b></label>
               <input type="text" placeholder="pronouciation" name="ans" required ngModel>
               <select name="levelId" id="" ngModel>
-                <option  value="" ></option>
+                <option *ngFor="let data of alldata1" value="{{data.id}}" >{{data.level}}</option>
               </select>
+              
+              <button type="submit" class="btn cancel" >Submit</button>
+            </form>
+          </div>
+
+          <div class="form-popup" id="myForm1">
+            <form #choise="ngForm" (ngSubmit)="multiExec(choise.value)"  class="form-container">
+              <label for="psw"><b>wrong answer</b></label>
+              <input type="text" placeholder="pronouciation" name="answer" required ngModel>
               
               <button type="submit" class="btn cancel" >Submit</button>
             </form>
